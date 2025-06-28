@@ -59,7 +59,36 @@ void runTask2() {
   print(onlyInSecond);
 }
 
+void runTask3() {
+  print('------------------- Task 3 -------------------');
+
+  final wordGen = WordGenerator();
+
+  // 1. Створення списку із 50 випадкових слів (іменників)
+  List<String> nounsList = List.generate(50, (_) => wordGen.randomNoun());
+  print('Список іменників:');
+  print(nounsList);
+
+  // 2. Створення Map: слово → кількість символів
+  Map<String, int> nounsMap = {
+    for (var word in nounsList) word: word.length,
+  };
+
+  // 3. Вибірка парних слів у нову Map
+  Map<String, int> tempNouns = {};
+  nounsMap.forEach((key, value) {
+    if (value % 2 == 0) {
+      tempNouns[key] = value;
+    }
+  });
+
+  // 4. Вивід ключів зі tempNouns
+  print('Слова з парною довжиною:');
+  print(tempNouns.keys);
+}
+
 void main() {
   runTask1();
   runTask2();
+  runTask3();
 }
