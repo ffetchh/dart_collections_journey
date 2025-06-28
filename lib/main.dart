@@ -35,6 +35,31 @@ void runTask1() {
   print('Довжина списку temp (парні числа): ${temp.length}');
 }
 
+import 'names.dart';
+
+void runTask2() {
+  print('------------------- Task 2 -------------------');
+
+  // Створення множин
+  Set<String> uniqueNames1 = Set.from(ukrainianNames1);
+  Set<String> uniqueNames2 = Set.from(ukrainianNames2);
+
+  // 1. Перетин (спільні імена)
+  Set<String> intersection = uniqueNames1.intersection(uniqueNames2);
+  print('Кількість спільних імен: ${intersection.length}');
+
+  // 2. Унікальні в першому списку
+  Set<String> onlyInFirst = uniqueNames1.difference(uniqueNames2);
+  print('Імена, які є в першому, але відсутні в другому:');
+  print(onlyInFirst);
+
+  // 3. Унікальні в другому списку
+  Set<String> onlyInSecond = uniqueNames2.difference(uniqueNames1);
+  print('Імена, які є в другому, але відсутні в першому:');
+  print(onlyInSecond);
+}
+
 void main() {
   runTask1();
+  runTask2();
 }
